@@ -11,12 +11,12 @@ import CryptoSwift
 
 class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, FileDropViewDelegate {
     
-    let SELECT_ALGORITHM_MD5 = 0
-    let SELECT_ALGORITHM_SHA1 = 1
-    let SELECT_ALGORITHM_SHA224 = 2
-    let SELECT_ALGORITHM_SHA256 = 3
-    let SELECT_ALGORITHM_SHA384 = 4
-    let SELECT_ALGORITHM_SHA512 = 5
+    let SELECT_ALGORITHM_MD5 = 0;
+    let SELECT_ALGORITHM_SHA1 = 1;
+    let SELECT_ALGORITHM_SHA224 = 2;
+    let SELECT_ALGORITHM_SHA256 = 3;
+    let SELECT_ALGORITHM_SHA384 = 4;
+    let SELECT_ALGORITHM_SHA512 = 5;
     let SELECT_ALGORITHM_CRC32 = 6;
     
     let RESULT_ERROR = "ERROR";
@@ -28,6 +28,8 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     @IBOutlet weak var fileDropView: FileDropView!
     @IBOutlet weak var hashAlgorithmComboBox: NSComboBoxCell!
     
+    @IBOutlet weak var progressView: NSProgressIndicator!
+    @IBOutlet weak var fileView: NSTextField!
     @IBOutlet weak var tabView: NSTabView!
     @IBOutlet weak var outputFormatRadio: NSMatrix!
     @IBOutlet weak var compareResultView: NSTextField!
@@ -42,6 +44,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         sourceStringView.delegate = self;
         tabView.delegate = self;
         fileDropView.delegate = self;
+        showProgress(false);
         loadDefault();
         checkCopyButtonVisibility();
     }
@@ -81,12 +84,28 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     func calcHash() {
+        let identify:String = tabView.selectedTabViewItem!.identifier as String;
+        let tabIndex:Int = identify == "1" ? 0 : 1;
+        if(tabIndex == 0) {
+            let filePath = fileView.stringValue;
+            if(filePath == "" || filePath == "No file") {
+                //Ignore
+            } else {
+                showProgress(true);
+                Async.background({
+                    self.hashFile(filePath);
+                });
+            }
+            return;
+        }
+        
+        showProgress(true);
         let sourceString = sourceStringView.stringValue;
         var result:String? = "";
-        if(sourceString == ""){
+        if(sourceString == "") {
             
-        }else{
-            switch(hashAlgorithmComboBox.indexOfSelectedItem){
+        } else {
+            switch(hashAlgorithmComboBox.indexOfSelectedItem) {
             case SELECT_ALGORITHM_MD5:
                 result = sourceString.md5();
             case SELECT_ALGORITHM_SHA1:
@@ -110,6 +129,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         }
         resultView.stringValue = result!;
         checkCopyButtonVisibility();
+        showProgress(false);
     }
     
     @IBAction func copyResultButtonClicked(sender: NSButton) {
@@ -134,9 +154,62 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     func fileDropView(didDroppedFile filePath: String) {
-        Async.background({
-            println("calc int view controler:\(filePath)")
-        });
+        var isDir:ObjCBool = false;
+        if(NSFileManager.defaultManager().fileExistsAtPath(filePath, isDirectory: &isDir) && !isDir) {
+            fileView.stringValue = filePath;
+            calcHash();
+        } else {
+            //not a file or is directory
+        }
+    }
+    
+    //Hash文件的时候，不能用CryptoSwift，因为如果一次性读入一个大文件的话，需要很多内存
+    func hashFile(filePath:String) {
+        var alg:TGDHashAlgorithm;
+        switch(hashAlgorithmComboBox.indexOfSelectedItem) {
+        case SELECT_ALGORITHM_MD5:
+            alg = TGDHashAlgorithm(TGDHashAlgorithmMD5);
+        case SELECT_ALGORITHM_SHA1:
+            alg = TGDHashAlgorithm(TGDHashAlgorithmSHA1);
+        case SELECT_ALGORITHM_SHA224:
+            alg = TGDHashAlgorithm(TGDHashAlgorithmSHA224);
+        case SELECT_ALGORITHM_SHA256:
+            alg = TGDHashAlgorithm(TGDHashAlgorithmSHA256);
+        case SELECT_ALGORITHM_SHA384:
+            alg = TGDHashAlgorithm(TGDHashAlgorithmSHA384);
+        case SELECT_ALGORITHM_SHA512:
+            alg = TGDHashAlgorithm(TGDHashAlgorithmSHA512);
+        case SELECT_ALGORITHM_CRC32:
+            alg = TGDHashAlgorithm(TGDChecksumAlgorithmCRC32);
+        default:
+            alg = TGDHashAlgorithm(TGDHashAlgorithmMD5);
+        }
+       
+        
+        var result = convertCfTypeToString(TGDFileHashCreateWithPath(filePath, 4096, alg));
+        
+        resultView.stringValue = result!;
+        checkCopyButtonVisibility();
+        showProgress(false);
+    }
+    
+    func convertCfTypeToString(cfValue:Unmanaged<CFString>!) ->String? {
+        let value = Unmanaged<CFStringRef>.fromOpaque(cfValue.toOpaque()).takeUnretainedValue() as CFStringRef;
+        if CFGetTypeID(value) == CFStringGetTypeID() {
+            return value as String;
+        } else {
+            return nil;
+        }
+    }
+    
+    func showProgress(show:Bool){
+        if(show) {
+            progressView.startAnimation(self);
+            progressView.hidden = false;
+        } else {
+            progressView.stopAnimation(self);
+            progressView.hidden = true;
+        }
     }
 }
 

@@ -146,6 +146,24 @@
                                             <subviews>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMj-cw-xKv" customClass="FileDropView" customModule="SwiftHash" customModuleProvider="target">
                                                     <rect key="frame" x="17" y="9" width="391" height="72"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BvU-WD-vci">
+                                                            <rect key="frame" x="18" y="8" width="355" height="39"/>
+                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No file" id="4lV-4I-ejx">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lF3-AW-xwz">
+                                                            <rect key="frame" x="143" y="49" width="104" height="18"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="DROP HERE" id="0zL-ar-9fL">
+                                                                <font key="font" metaFont="system" size="15"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                    </subviews>
                                                 </customView>
                                             </subviews>
                                         </view>
@@ -296,6 +314,9 @@
                                                 <action selector="copyResultButtonClicked:" target="XfG-lQ-9wD" id="6zP-Zs-IPS"/>
                                             </connections>
                                         </button>
+                                        <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="mQu-EL-twl">
+                                            <rect key="frame" x="71" y="179" width="16" height="16"/>
+                                        </progressIndicator>
                                     </subviews>
                                 </view>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -308,8 +329,10 @@
                         <outlet property="compareView" destination="ZoQ-tW-7rR" id="pk7-8O-DdI"/>
                         <outlet property="copyResultButton" destination="F4Q-VW-kfJ" id="bSM-5q-yrz"/>
                         <outlet property="fileDropView" destination="DMj-cw-xKv" id="Lyc-Ma-4X3"/>
+                        <outlet property="fileView" destination="BvU-WD-vci" id="N39-bW-uDS"/>
                         <outlet property="hashAlgorithmComboBox" destination="G5n-X3-dZB" id="EjP-9b-C8h"/>
                         <outlet property="outputFormatRadio" destination="gic-Ew-Urm" id="UoM-cc-UD7"/>
+                        <outlet property="progressView" destination="mQu-EL-twl" id="S0S-Nb-hgH"/>
                         <outlet property="resultView" destination="b06-OV-9kg" id="L5x-91-Q1P"/>
                         <outlet property="sourceString" destination="1gs-lL-J4h" id="FzL-AI-eIi"/>
                         <outlet property="sourceStringView" destination="Deu-yM-Pra" id="TaF-w7-O2V"/>

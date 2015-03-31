@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DE3263B61AC90DFE00752DE9 /* FileDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3263B51AC90DFE00752DE9 /* FileDropView.swift */; };
+		DE3F65721ACA2FB100C9D28B /* TGDFileHash.c in Sources */ = {isa = PBXBuildFile; fileRef = DE3F65701ACA2FB100C9D28B /* TGDFileHash.c */; };
 		DEC53B591AC93E2E006E6657 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC53B581AC93E2E006E6657 /* Async.swift */; };
 		DEFD495F1AC90B65001A5A63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD495E1AC90B65001A5A63 /* AppDelegate.swift */; };
 		DEFD49611AC90B65001A5A63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD49601AC90B65001A5A63 /* ViewController.swift */; };
@@ -48,8 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE0F4FCD1AC94F6F009AD73C /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		DE3263AC1AC90D0500752DE9 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		DE3263B51AC90DFE00752DE9 /* FileDropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDropView.swift; sourceTree = "<group>"; };
+		DE3F656C1ACA2B9600C9D28B /* SwiftHash-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftHash-Bridging-Header.h"; sourceTree = "<group>"; };
+		DE3F65701ACA2FB100C9D28B /* TGDFileHash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TGDFileHash.c; sourceTree = "<group>"; };
+		DE3F65711ACA2FB100C9D28B /* TGDFileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGDFileHash.h; sourceTree = "<group>"; };
 		DEC53B581AC93E2E006E6657 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		DEFD49591AC90B65001A5A63 /* SwiftHash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftHash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFD495D1AC90B65001A5A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,6 +97,7 @@
 		DEFD49501AC90B65001A5A63 = {
 			isa = PBXGroup;
 			children = (
+				DE0F4FCD1AC94F6F009AD73C /* libcommonCrypto.dylib */,
 				DE3263AC1AC90D0500752DE9 /* CryptoSwift.xcodeproj */,
 				DEFD495B1AC90B65001A5A63 /* SwiftHash */,
 				DEFD496E1AC90B65001A5A63 /* SwiftHashTests */,
@@ -111,6 +117,8 @@
 		DEFD495B1AC90B65001A5A63 /* SwiftHash */ = {
 			isa = PBXGroup;
 			children = (
+				DE3F65701ACA2FB100C9D28B /* TGDFileHash.c */,
+				DE3F65711ACA2FB100C9D28B /* TGDFileHash.h */,
 				DEFD495E1AC90B65001A5A63 /* AppDelegate.swift */,
 				DEC53B581AC93E2E006E6657 /* Async.swift */,
 				DEFD49601AC90B65001A5A63 /* ViewController.swift */,
@@ -118,6 +126,7 @@
 				DEFD49641AC90B65001A5A63 /* Main.storyboard */,
 				DEFD495C1AC90B65001A5A63 /* Supporting Files */,
 				DE3263B51AC90DFE00752DE9 /* FileDropView.swift */,
+				DE3F656C1ACA2B9600C9D28B /* SwiftHash-Bridging-Header.h */,
 			);
 			path = SwiftHash;
 			sourceTree = "<group>";
@@ -270,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE3F65721ACA2FB100C9D28B /* TGDFileHash.c in Sources */,
 				DEC53B591AC93E2E006E6657 /* Async.swift in Sources */,
 				DEFD49611AC90B65001A5A63 /* ViewController.swift in Sources */,
 				DEFD495F1AC90B65001A5A63 /* AppDelegate.swift in Sources */,
@@ -393,10 +403,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SwiftHash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftHash/SwiftHash-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -404,10 +421,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SwiftHash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftHash/SwiftHash-Bridging-Header.h";
 			};
 			name = Release;
 		};

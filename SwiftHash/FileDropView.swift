@@ -16,12 +16,12 @@ class FileDropView : NSView, NSDraggingDestination {
     
     override func drawRect(dirtyRect: NSRect)  {
         super.drawRect(dirtyRect)
-        NSColor.redColor().set()
-        NSRectFill(dirtyRect)
+        NSColor.whiteColor().set();
+        NSRectFill(dirtyRect);
     }
     
     override func awakeFromNib() {
-        registerForDraggedTypes([NSFilenamesPboardType])
+        registerForDraggedTypes([NSFilenamesPboardType]);
     }
     
     override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation  {
