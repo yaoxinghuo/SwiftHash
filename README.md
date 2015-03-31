@@ -11,6 +11,7 @@
 4. SHA256
 5. SHA384
 6. SHA512
+7. CRC32
 
 ####Support Convert Type:
 >
