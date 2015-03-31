@@ -63,7 +63,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         refreshAlgorithmComboBox(tabIndex);
         
         var seletedAlgorithmIndex = defaults.integerForKey(DEFALUT_SELECTED_ALGORITHM_INDEX_KEY);
-        if(seletedAlgorithmIndex >= hashAlgorithmComboBox.numberOfItems){
+        if(seletedAlgorithmIndex >= hashAlgorithmComboBox.numberOfItems || seletedAlgorithmIndex < 0){
             seletedAlgorithmIndex = 0;
         }
         hashAlgorithmComboBox.selectItemAtIndex(seletedAlgorithmIndex);
@@ -95,7 +95,10 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     func calcHash() {
-        let algorithmIndex = hashAlgorithmComboBox.indexOfSelectedItem;
+        var algorithmIndex = hashAlgorithmComboBox.indexOfSelectedItem;
+        if(algorithmIndex < 0) {
+            algorithmIndex=0;
+        }
         let identify:String = tabView.selectedTabViewItem!.identifier as String;
         let tabIndex:Int = identify == "1" ? 0 : 1;
         if(tabIndex == 0) {
@@ -232,7 +235,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         }
     }
     
-    func showResult(result:String?){
+    func showResult(result:String?) {
         var lowercase = outputFormatRadio.selectedRow == 0;
         var string:String;
         if(result == nil) {
