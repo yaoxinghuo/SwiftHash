@@ -240,7 +240,11 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         }else{
             string = result!;
         }
-        resultView.stringValue = lowercase ? string.lowercaseString : string.uppercaseString;
+        if(hashAlgorithmComboBox.indexOfSelectedItem > LAST_ALGORITHM_TYPE_INDEX + 2) {
+            resultView.stringValue = string;
+        } else {
+            resultView.stringValue = lowercase ? string.lowercaseString : string.uppercaseString;
+        }
     }
     
     func showProgress(show:Bool) {
