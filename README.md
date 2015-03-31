@@ -1,29 +1,38 @@
 # Swift Hash&Convert
 
-####Hash app for Mac for develop use, written in swift.
+Hash app for Mac for develop use, written in swift.
 
 ---
-####Support Hash Algorithm:
->
-1. MD5
-2. SHA1
-3. SHA224
-4. SHA256
-5. SHA384
-6. SHA512
-7. CRC32
+###Supportted Hash Algorithm
+-
+* MD5
+* SHA1
+* SHA224
+* SHA256
+* SHA384
+* SHA512
+* CRC32
 
-####Support Convert Type:
->
-1. Decimal to Hex String
-2. Hex to Decimal String
-3. String to Base64
-4. Base64 to String
+###Supportted Convert Types
+-
+* Decimal to Hex String
+* Hex to Decimal String
+* String to Base64
+* Base64 to String
 
-####Source Input:
->
-1. File, you can drop your file to the drop zone
-2. String by input
+###Main Features
+-
+* Hash file, you can drop your file to the drop zone
+* Hash or convert String by input
+* Lower case or Upper case hash result
+* Compare hash result with your desired result
+* Copy hash result to clipboard
+* Remember last algorithm when start
 
-####Screen Shot:
+###Screen Shot
+-
 ![demo](https://raw.githubusercontent.com/yaoxinghuo/SwiftHash/master/screenshot.png)
+
+###License
+-
+Swift Hash&Convert is distributed under the Apache License version 2. Please read the file LICENSE for more details.
