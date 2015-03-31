@@ -11,6 +11,9 @@
 		DE3F65721ACA2FB100C9D28B /* TGDFileHash.c in Sources */ = {isa = PBXBuildFile; fileRef = DE3F65701ACA2FB100C9D28B /* TGDFileHash.c */; };
 		DE3F65771ACA626600C9D28B /* ConvertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3F65761ACA626600C9D28B /* ConvertUtil.swift */; };
 		DEC53B591AC93E2E006E6657 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC53B581AC93E2E006E6657 /* Async.swift */; };
+		DED511E41ACA73A600DB49E1 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE3263B21AC90D0500752DE9 /* CryptoSwift.framework */; };
+		DED511E81ACA776E00DB49E1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DED511E71ACA776E00DB49E1 /* logo.png */; };
+		DED511EA1ACA780B00DB49E1 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE3263B21AC90D0500752DE9 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DEFD495F1AC90B65001A5A63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD495E1AC90B65001A5A63 /* AppDelegate.swift */; };
 		DEFD49611AC90B65001A5A63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD49601AC90B65001A5A63 /* ViewController.swift */; };
 		DEFD49631AC90B65001A5A63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEFD49621AC90B65001A5A63 /* Images.xcassets */; };
@@ -40,6 +43,13 @@
 			remoteGlobalIDString = 754BE45419693E190098E6F3;
 			remoteInfo = CryptoSwift;
 		};
+		DED511EB1ACA780B00DB49E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE3263AC1AC90D0500752DE9 /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
 		DEFD496C1AC90B65001A5A63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DEFD49511AC90B65001A5A63 /* Project object */;
@@ -48,6 +58,20 @@
 			remoteInfo = SwiftHash;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DED511ED1ACA780B00DB49E1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DED511EA1ACA780B00DB49E1 /* CryptoSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DE0F4FCD1AC94F6F009AD73C /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
@@ -58,6 +82,7 @@
 		DE3F65711ACA2FB100C9D28B /* TGDFileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGDFileHash.h; sourceTree = "<group>"; };
 		DE3F65761ACA626600C9D28B /* ConvertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertUtil.swift; sourceTree = "<group>"; };
 		DEC53B581AC93E2E006E6657 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		DED511E71ACA776E00DB49E1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		DEFD49591AC90B65001A5A63 /* SwiftHash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftHash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFD495D1AC90B65001A5A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEFD495E1AC90B65001A5A63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DED511E41ACA73A600DB49E1 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +145,7 @@
 		DEFD495B1AC90B65001A5A63 /* SwiftHash */ = {
 			isa = PBXGroup;
 			children = (
+				DED511E71ACA776E00DB49E1 /* logo.png */,
 				DE3F65761ACA626600C9D28B /* ConvertUtil.swift */,
 				DE3F65701ACA2FB100C9D28B /* TGDFileHash.c */,
 				DE3F65711ACA2FB100C9D28B /* TGDFileHash.h */,
@@ -169,11 +196,13 @@
 				DEFD49551AC90B65001A5A63 /* Sources */,
 				DEFD49561AC90B65001A5A63 /* Frameworks */,
 				DEFD49571AC90B65001A5A63 /* Resources */,
+				DED511ED1ACA780B00DB49E1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				DE3263BB1AC919E900752DE9 /* PBXTargetDependency */,
+				DED511EC1ACA780B00DB49E1 /* PBXTargetDependency */,
 			);
 			name = SwiftHash;
 			productName = SwiftHash;
@@ -265,6 +294,7 @@
 			files = (
 				DEFD49631AC90B65001A5A63 /* Images.xcassets in Resources */,
 				DEFD49661AC90B65001A5A63 /* Main.storyboard in Resources */,
+				DED511E81ACA776E00DB49E1 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +336,11 @@
 			isa = PBXTargetDependency;
 			name = CryptoSwift;
 			targetProxy = DE3263BA1AC919E900752DE9 /* PBXContainerItemProxy */;
+		};
+		DED511EC1ACA780B00DB49E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CryptoSwift;
+			targetProxy = DED511EB1ACA780B00DB49E1 /* PBXContainerItemProxy */;
 		};
 		DEFD496D1AC90B65001A5A63 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -409,6 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SwiftHash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -427,6 +463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SwiftHash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
