@@ -11,7 +11,6 @@
 		DE3F65721ACA2FB100C9D28B /* TGDFileHash.c in Sources */ = {isa = PBXBuildFile; fileRef = DE3F65701ACA2FB100C9D28B /* TGDFileHash.c */; };
 		DE3F65771ACA626600C9D28B /* ConvertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3F65761ACA626600C9D28B /* ConvertUtil.swift */; };
 		DEC53B591AC93E2E006E6657 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC53B581AC93E2E006E6657 /* Async.swift */; };
-		DED511E41ACA73A600DB49E1 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE3263B21AC90D0500752DE9 /* CryptoSwift.framework */; };
 		DED511E81ACA776E00DB49E1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DED511E71ACA776E00DB49E1 /* logo.png */; };
 		DED511EA1ACA780B00DB49E1 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE3263B21AC90D0500752DE9 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DEFD495F1AC90B65001A5A63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD495E1AC90B65001A5A63 /* AppDelegate.swift */; };
@@ -74,7 +73,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DE0F4FCD1AC94F6F009AD73C /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		DE3263AC1AC90D0500752DE9 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		DE3263B51AC90DFE00752DE9 /* FileDropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDropView.swift; sourceTree = "<group>"; };
 		DE3F656C1ACA2B9600C9D28B /* SwiftHash-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftHash-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DED511E41ACA73A600DB49E1 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +122,6 @@
 		DEFD49501AC90B65001A5A63 = {
 			isa = PBXGroup;
 			children = (
-				DE0F4FCD1AC94F6F009AD73C /* libcommonCrypto.dylib */,
 				DE3263AC1AC90D0500752DE9 /* CryptoSwift.xcodeproj */,
 				DEFD495B1AC90B65001A5A63 /* SwiftHash */,
 				DEFD496E1AC90B65001A5A63 /* SwiftHashTests */,
