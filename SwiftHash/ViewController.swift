@@ -154,6 +154,10 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     func fileDropView(didDroppedFile filePath: String) {
+        //if a file is processing, do not accept new file
+        if(progressView.hidden == false) {
+            return;
+        }
         var isDir:ObjCBool = false;
         if(NSFileManager.defaultManager().fileExistsAtPath(filePath, isDirectory: &isDir) && !isDir) {
             fileView.stringValue = filePath;
