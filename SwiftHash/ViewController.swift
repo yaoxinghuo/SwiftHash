@@ -127,7 +127,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
                 result = RESULT_ERROR;
             }
         }
-        resultView.stringValue = result!;
+        showResult(result!);
         checkCopyButtonVisibility();
         showProgress(false);
     }
@@ -141,7 +141,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     @IBAction func outputFormatClicked(sender: NSMatrix) {
-        calcHash();
+        showResult(nil);
         let defaults = NSUserDefaults.standardUserDefaults();
         defaults.setInteger(outputFormatRadio.selectedRow, forKey: DEFAULT_OUTPUT_FORMAT_INDEX_KEY);
     }
@@ -192,7 +192,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         
         var result = convertCfTypeToString(TGDFileHashCreateWithPath(filePath, 4096, alg));
         
-        resultView.stringValue = result!;
+        showResult(result!);
         checkCopyButtonVisibility();
         showProgress(false);
     }
@@ -204,6 +204,17 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         } else {
             return nil;
         }
+    }
+    
+    func showResult(result:String?){
+        var lowercase = outputFormatRadio.selectedRow == 0;
+        var string:String;
+        if(result == nil){
+            string = resultView.stringValue;
+        }else{
+            string = result!;
+        }
+        resultView.stringValue = lowercase ? string.lowercaseString : string.uppercaseString;
     }
     
     func showProgress(show:Bool){

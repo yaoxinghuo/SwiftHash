@@ -151,7 +151,7 @@
                                                             <rect key="frame" x="18" y="8" width="355" height="39"/>
                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No file" id="4lV-4I-ejx">
                                                                 <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="textColor" red="0.0" green="0.60417664390000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
