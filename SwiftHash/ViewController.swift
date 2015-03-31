@@ -25,6 +25,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     let DEFAULT_OUTPUT_FORMAT_INDEX_KEY = "outputFormatIndex" //0 lowercase 1upcase
     let DEFAULT_TAB_INDEX_KEY = "tabIndex";
 
+    @IBOutlet weak var dropHintView: NSTextField!
     @IBOutlet weak var fileDropView: FileDropView!
     @IBOutlet weak var hashAlgorithmComboBox: NSComboBoxCell!
     
@@ -42,6 +43,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         super.viewDidLoad();
         
         sourceStringView.delegate = self;
+        compareView.delegate = self;
         tabView.delegate = self;
         fileDropView.delegate = self;
         showProgress(false);
@@ -80,7 +82,13 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     override func controlTextDidChange(obj: NSNotification) {
-        calcHash();
+        var textField:NSTextField = obj.object as NSTextField;
+        if(textField == sourceStringView){
+            calcHash();
+        } else {
+            compareResult();
+        }
+        
     }
     
     func calcHash() {
@@ -209,7 +217,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     func showResult(result:String?){
         var lowercase = outputFormatRadio.selectedRow == 0;
         var string:String;
-        if(result == nil){
+        if(result == nil) {
             string = resultView.stringValue;
         }else{
             string = result!;
@@ -217,14 +225,32 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         resultView.stringValue = lowercase ? string.lowercaseString : string.uppercaseString;
     }
     
-    func showProgress(show:Bool){
+    func showProgress(show:Bool) {
         if(show) {
+            dropHintView.stringValue = "Please wait...";
             progressView.startAnimation(self);
             progressView.hidden = false;
         } else {
+            dropHintView.stringValue = "Drop File Here";
             progressView.stopAnimation(self);
             progressView.hidden = true;
         }
+    }
+    
+    func compareResult() {
+        var resultString = resultView.stringValue;
+        var compareString = compareView.stringValue;
+        var compareResultString:String = "";
+        if(resultString != "" && compareString != "") {
+            if(resultString.lowercaseString == compareString.lowercaseString) {
+                compareResultString = "Equals";
+                compareResultView.textColor = NSColor.blueColor();
+            } else {
+                compareResultView.textColor = NSColor.redColor();
+                compareResultString = "Not Equals";
+            }
+        }
+        compareResultView.stringValue = compareResultString;
     }
 }
 
