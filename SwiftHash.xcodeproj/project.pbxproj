@@ -10,6 +10,7 @@
 		DE3263B61AC90DFE00752DE9 /* FileDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3263B51AC90DFE00752DE9 /* FileDropView.swift */; };
 		DE3F65721ACA2FB100C9D28B /* TGDFileHash.c in Sources */ = {isa = PBXBuildFile; fileRef = DE3F65701ACA2FB100C9D28B /* TGDFileHash.c */; };
 		DE3F65771ACA626600C9D28B /* ConvertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3F65761ACA626600C9D28B /* ConvertUtil.swift */; };
+		DE5D81911ACA89E700586DF0 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5D81901ACA89E700586DF0 /* screenshot.png */; };
 		DEC53B591AC93E2E006E6657 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC53B581AC93E2E006E6657 /* Async.swift */; };
 		DED511E81ACA776E00DB49E1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DED511E71ACA776E00DB49E1 /* logo.png */; };
 		DED511EA1ACA780B00DB49E1 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE3263B21AC90D0500752DE9 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -79,6 +80,7 @@
 		DE3F65701ACA2FB100C9D28B /* TGDFileHash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TGDFileHash.c; sourceTree = "<group>"; };
 		DE3F65711ACA2FB100C9D28B /* TGDFileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGDFileHash.h; sourceTree = "<group>"; };
 		DE3F65761ACA626600C9D28B /* ConvertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertUtil.swift; sourceTree = "<group>"; };
+		DE5D81901ACA89E700586DF0 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		DEC53B581AC93E2E006E6657 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		DED511E71ACA776E00DB49E1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		DEFD49591AC90B65001A5A63 /* SwiftHash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftHash.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 		DEFD49501AC90B65001A5A63 = {
 			isa = PBXGroup;
 			children = (
+				DE5D81901ACA89E700586DF0 /* screenshot.png */,
 				DE3263AC1AC90D0500752DE9 /* CryptoSwift.xcodeproj */,
 				DEFD495B1AC90B65001A5A63 /* SwiftHash */,
 				DEFD496E1AC90B65001A5A63 /* SwiftHashTests */,
@@ -291,6 +294,7 @@
 				DEFD49631AC90B65001A5A63 /* Images.xcassets in Resources */,
 				DEFD49661AC90B65001A5A63 /* Main.storyboard in Resources */,
 				DED511E81ACA776E00DB49E1 /* logo.png in Resources */,
+				DE5D81911ACA89E700586DF0 /* screenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
