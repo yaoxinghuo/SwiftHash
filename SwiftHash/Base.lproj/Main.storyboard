@@ -360,11 +360,10 @@
                                 <tabViewItems>
                                     <tabViewItem label="File" identifier="1" id="Upj-dZ-up0">
                                         <view key="view" id="aPR-pA-arJ">
-                                            <rect key="frame" x="10" y="33" width="425" height="84"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMj-cw-xKv" customClass="FileDropView" customModule="SwiftHash" customModuleProvider="target">
-                                                    <rect key="frame" x="17" y="9" width="391" height="72"/>
+                                                    <rect key="frame" x="17" y="-75" width="391" height="72"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BvU-WD-vci">
                                                             <rect key="frame" x="18" y="8" width="355" height="39"/>
@@ -412,8 +411,8 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4rM-bo-3fe">
-                                            <rect key="frame" x="16" y="61" width="103" height="17"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hash Algorithm:" id="gON-rF-UXG">
+                                            <rect key="frame" x="16" y="61" width="189" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hash Algorithm/Convert Type:" id="gON-rF-UXG">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -421,18 +420,12 @@
                                         </textField>
                                         <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OsH-gO-4iM">
                                             <rect key="frame" x="18" y="29" width="217" height="26"/>
-                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="MD5" drawsBackground="YES" completes="NO" numberOfVisibleItems="9" id="G5n-X3-dZB">
+                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="MD5" drawsBackground="YES" completes="NO" numberOfVisibleItems="11" id="G5n-X3-dZB">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <objectValues>
                                                     <string>MD5</string>
-                                                    <string>SHA1</string>
-                                                    <string>SHA224</string>
-                                                    <string>SHA256</string>
-                                                    <string>SHA384</string>
-                                                    <string>SHA512</string>
-                                                    <string>CRC32</string>
                                                 </objectValues>
                                             </comboBoxCell>
                                             <connections>
@@ -465,7 +458,7 @@
                                             </connections>
                                         </matrix>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRM-nb-2c2">
-                                            <rect key="frame" x="259" y="61" width="51" height="17"/>
+                                            <rect key="frame" x="260" y="61" width="51" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Output:" id="46T-fh-ShX">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

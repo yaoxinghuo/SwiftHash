@@ -18,6 +18,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     let SELECT_ALGORITHM_SHA384 = 4;
     let SELECT_ALGORITHM_SHA512 = 5;
     let SELECT_ALGORITHM_CRC32 = 6;
+    let LAST_ALGORITHM_TYPE_INDEX = 6;
     
     let RESULT_ERROR = "ERROR";
     
@@ -46,26 +47,28 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         compareView.delegate = self;
         tabView.delegate = self;
         fileDropView.delegate = self;
+        
         showProgress(false);
         loadDefault();
         checkCopyButtonVisibility();
     }
     
     func loadDefault() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let seletedAlgorithmIndex = defaults.integerForKey(DEFALUT_SELECTED_ALGORITHM_INDEX_KEY)
-        hashAlgorithmComboBox.selectItemAtIndex(seletedAlgorithmIndex)
+        let defaults = NSUserDefaults.standardUserDefaults();
         let outputFormatIndex = defaults.integerForKey(DEFAULT_OUTPUT_FORMAT_INDEX_KEY);
         outputFormatRadio.selectCellAtRow(outputFormatIndex, column: 0);
         let tabIndex = defaults.integerForKey(DEFAULT_TAB_INDEX_KEY);
         tabView.selectTabViewItemAtIndex(tabIndex);
+        
+        refreshAlgorithmComboBox(tabIndex);
+        
+        var seletedAlgorithmIndex = defaults.integerForKey(DEFALUT_SELECTED_ALGORITHM_INDEX_KEY);
+        if(seletedAlgorithmIndex >= hashAlgorithmComboBox.numberOfItems){
+            seletedAlgorithmIndex = 0;
+        }
+        hashAlgorithmComboBox.selectItemAtIndex(seletedAlgorithmIndex);
     }
 
-    override var representedObject: AnyObject? {
-        didSet {
-        }
-    }
-    
     func checkCopyButtonVisibility() {
         let resultString = resultView.stringValue;
         var hidden : Bool = false;
@@ -92,6 +95,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     func calcHash() {
+        let algorithmIndex = hashAlgorithmComboBox.indexOfSelectedItem;
         let identify:String = tabView.selectedTabViewItem!.identifier as String;
         let tabIndex:Int = identify == "1" ? 0 : 1;
         if(tabIndex == 0) {
@@ -113,24 +117,29 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         if(sourceString == "") {
             
         } else {
-            switch(hashAlgorithmComboBox.indexOfSelectedItem) {
-            case SELECT_ALGORITHM_MD5:
-                result = sourceString.md5();
-            case SELECT_ALGORITHM_SHA1:
-                result = sourceString.sha1();
-            case SELECT_ALGORITHM_SHA224:
-                result = sourceString.sha224();
-            case SELECT_ALGORITHM_SHA256:
-                result = sourceString.sha256();
-            case SELECT_ALGORITHM_SHA384:
-                result = sourceString.sha384();
-            case SELECT_ALGORITHM_SHA512:
-                result = sourceString.sha512();
-            case SELECT_ALGORITHM_CRC32:
-                result = sourceString.crc32();
-            default:
-                result = RESULT_ERROR;
+            if(algorithmIndex > LAST_ALGORITHM_TYPE_INDEX){
+                result = convert(sourceString, algorithmIndex - LAST_ALGORITHM_TYPE_INDEX - 1);
+            } else {
+                switch(algorithmIndex) {
+                case SELECT_ALGORITHM_MD5:
+                    result = sourceString.md5();
+                case SELECT_ALGORITHM_SHA1:
+                    result = sourceString.sha1();
+                case SELECT_ALGORITHM_SHA224:
+                    result = sourceString.sha224();
+                case SELECT_ALGORITHM_SHA256:
+                    result = sourceString.sha256();
+                case SELECT_ALGORITHM_SHA384:
+                    result = sourceString.sha384();
+                case SELECT_ALGORITHM_SHA512:
+                    result = sourceString.sha512();
+                case SELECT_ALGORITHM_CRC32:
+                    result = sourceString.crc32();
+                default:
+                    result = RESULT_ERROR;
+                }
             }
+           
             if(result == nil) {
                 result = RESULT_ERROR;
             }
@@ -159,6 +168,15 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         let defaults = NSUserDefaults.standardUserDefaults();
         let tabIndex:Int = identify == "1" ? 0 : 1;
         defaults.setInteger(tabIndex, forKey: DEFAULT_TAB_INDEX_KEY);
+        refreshAlgorithmComboBox(tabIndex);
+    }
+    
+    func refreshAlgorithmComboBox(tab:Int){
+        hashAlgorithmComboBox.removeAllItems();
+        hashAlgorithmComboBox.addItemsWithObjectValues(["MD5","SHA1","SHA224","SHA256","SHA384","SHA512","CRC32"]);
+        if(tab==1) {
+            hashAlgorithmComboBox.addItemsWithObjectValues(["Dec->Hex","Hex->Dec","String->Base64","Base64->String"]);
+        }
     }
     
     func fileDropView(didDroppedFile filePath: String) {
