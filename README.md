@@ -12,7 +12,7 @@ Hash&Convert app for Mac, for develop use, written in swift.
 * Remember last algorithm when start
 
 
-##Supportted Hash Algorithm
+##Supported Hash Algorithm
 * MD5
 * SHA1
 * SHA224
@@ -21,7 +21,7 @@ Hash&Convert app for Mac, for develop use, written in swift.
 * SHA512
 * CRC32
 
-##Supportted Convert Types
+##Supported Convert Types
 * Decimal to Hex String
 * Hex to Decimal String
 * String to Base64
