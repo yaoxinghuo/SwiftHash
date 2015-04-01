@@ -49,11 +49,8 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         fileDropView.delegate = self;
         
         showProgress(false);
-        checkCopyButtonVisibility();
-    }
-    
-    override func viewDidAppear() {
         loadDefault();
+        checkCopyButtonVisibility();
     }
     
     func loadDefault() {
@@ -70,12 +67,6 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
             seletedAlgorithmIndex = 0;
         }
         hashAlgorithmComboBox.selectItemAtIndex(seletedAlgorithmIndex);
-
-        if(tabIndex == 1) {
-            sourceStringView.becomeFirstResponder();
-        } else {
-            fileView.becomeFirstResponder();
-        }
     }
     
     func checkCopyButtonVisibility() {
@@ -175,18 +166,12 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         defaults.setInteger(outputFormatRadio.selectedRow, forKey: DEFAULT_OUTPUT_FORMAT_INDEX_KEY);
     }
     
-    func tabView(tabView: NSTabView, didSelectTabViewItem tabViewItem: NSTabViewItem?){
+    func tabView(tabView: NSTabView, didSelectTabViewItem tabViewItem: NSTabViewItem?) {
         let identify:String = tabViewItem!.identifier as String;
         let defaults = NSUserDefaults.standardUserDefaults();
         let tabIndex:Int = identify == "1" ? 0 : 1;
         defaults.setInteger(tabIndex, forKey: DEFAULT_TAB_INDEX_KEY);
         refreshAlgorithmComboBox(tabIndex);
-        
-        if(tabIndex == 1) {
-            sourceStringView.becomeFirstResponder();
-        } else {
-            fileView.becomeFirstResponder();
-        }
     }
     
     func refreshAlgorithmComboBox(tab:Int) {
