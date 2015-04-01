@@ -49,8 +49,11 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         fileDropView.delegate = self;
         
         showProgress(false);
-        loadDefault();
         checkCopyButtonVisibility();
+    }
+    
+    override func viewDidAppear() {
+        loadDefault();
     }
     
     func loadDefault() {
@@ -67,8 +70,14 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
             seletedAlgorithmIndex = 0;
         }
         hashAlgorithmComboBox.selectItemAtIndex(seletedAlgorithmIndex);
-    }
 
+        if(tabIndex == 1) {
+            sourceStringView.becomeFirstResponder();
+        } else {
+            fileView.becomeFirstResponder();
+        }
+    }
+    
     func checkCopyButtonVisibility() {
         let resultString = resultView.stringValue;
         var hidden : Bool = false;
@@ -172,12 +181,18 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         let tabIndex:Int = identify == "1" ? 0 : 1;
         defaults.setInteger(tabIndex, forKey: DEFAULT_TAB_INDEX_KEY);
         refreshAlgorithmComboBox(tabIndex);
+        
+        if(tabIndex == 1) {
+            sourceStringView.becomeFirstResponder();
+        } else {
+            fileView.becomeFirstResponder();
+        }
     }
     
-    func refreshAlgorithmComboBox(tab:Int){
+    func refreshAlgorithmComboBox(tab:Int) {
         hashAlgorithmComboBox.removeAllItems();
         hashAlgorithmComboBox.addItemsWithObjectValues(["MD5","SHA1","SHA224","SHA256","SHA384","SHA512","CRC32"]);
-        if(tab==1) {
+        if(tab == 1) {
             hashAlgorithmComboBox.addItemsWithObjectValues(["Dec->Hex","Hex->Dec","String->Base64","Base64->String"]);
         }
     }
