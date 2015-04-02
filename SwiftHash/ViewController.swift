@@ -248,6 +248,8 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         } else {
             resultView.stringValue = lowercase ? string.lowercaseString : string.uppercaseString;
         }
+        
+        compareResult();
     }
     
     func showProgress(show:Bool) {
