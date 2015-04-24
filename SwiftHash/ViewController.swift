@@ -85,7 +85,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     override func controlTextDidChange(obj: NSNotification) {
-        var textField:NSTextField = obj.object as NSTextField;
+        var textField:NSTextField = obj.object as! NSTextField;
         if(textField == sourceStringView){
             calcHash();
         } else {
@@ -99,7 +99,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         if(algorithmIndex < 0) {
             algorithmIndex=0;
         }
-        let identify:String = tabView.selectedTabViewItem!.identifier as String;
+        let identify:String = tabView.selectedTabViewItem!.identifier as! String;
         let tabIndex:Int = identify == "1" ? 0 : 1;
         if(tabIndex == 0) {
             let filePath = fileView.stringValue;
@@ -167,7 +167,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     func tabView(tabView: NSTabView, didSelectTabViewItem tabViewItem: NSTabViewItem?) {
-        let identify:String = tabViewItem!.identifier as String;
+        let identify:String = tabViewItem!.identifier as! String;
         let defaults = NSUserDefaults.standardUserDefaults();
         let tabIndex:Int = identify == "1" ? 0 : 1;
         defaults.setInteger(tabIndex, forKey: DEFAULT_TAB_INDEX_KEY);

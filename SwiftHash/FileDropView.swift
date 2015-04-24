@@ -41,8 +41,8 @@ class FileDropView : NSView, NSDraggingDestination {
         var pboard:NSPasteboard! = sender.draggingPasteboard()
         if pboard != nil {
             pboard = sender.draggingPasteboard()
-            if contains(pboard.types as [NSString],NSFilenamesPboardType) {
-                var files:[String] = pboard.propertyListForType(NSFilenamesPboardType) as [String]
+            if contains(pboard.types as! [NSString],NSFilenamesPboardType) {
+                var files:[String] = pboard.propertyListForType(NSFilenamesPboardType) as! [String]
                 if(files.count > 0) {
                     if(delegate != nil) {
                         delegate!.fileDropView(didDroppedFile: files[0]);
