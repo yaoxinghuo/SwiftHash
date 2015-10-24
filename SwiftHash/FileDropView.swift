@@ -10,7 +10,7 @@
 import Foundation
 import Cocoa
 
-class FileDropView : NSView, NSDraggingDestination {
+class FileDropView : NSView {
     
     var delegate : FileDropViewDelegate?;
     
@@ -41,7 +41,7 @@ class FileDropView : NSView, NSDraggingDestination {
         var pboard:NSPasteboard! = sender.draggingPasteboard()
         if pboard != nil {
             pboard = sender.draggingPasteboard()
-            if contains(pboard.types as! [NSString],NSFilenamesPboardType) {
+            if pboard.types!.contains(NSFilenamesPboardType) {
                 var files:[String] = pboard.propertyListForType(NSFilenamesPboardType) as! [String]
                 if(files.count > 0) {
                     if(delegate != nil) {

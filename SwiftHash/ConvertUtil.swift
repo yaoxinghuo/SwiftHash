@@ -31,7 +31,7 @@ func convert(source:String, type:Int) -> String? {
 }
 
 func convertDecToHex(source:String) -> String? {
-    let numberOfString = source.toInt();
+    let numberOfString = Int(source);
     if(numberOfString == nil) {
         return nil;
     }

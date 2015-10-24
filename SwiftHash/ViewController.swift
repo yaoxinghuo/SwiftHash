@@ -85,7 +85,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     override func controlTextDidChange(obj: NSNotification) {
-        var textField:NSTextField = obj.object as! NSTextField;
+        let textField:NSTextField = obj.object as! NSTextField;
         if(textField == sourceStringView){
             calcHash();
         } else {
@@ -107,9 +107,9 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
                 //Ignore
             } else {
                 showProgress(true);
-                Async.background({
+                Async.background {
                     self.hashFile(filePath);
-                });
+                };
             }
             return;
         }
@@ -121,7 +121,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
             
         } else {
             if(algorithmIndex > LAST_ALGORITHM_TYPE_INDEX){
-                result = convert(sourceString, algorithmIndex - LAST_ALGORITHM_TYPE_INDEX - 1);
+                result = convert(sourceString, type: algorithmIndex - LAST_ALGORITHM_TYPE_INDEX - 1);
             } else {
                 switch(algorithmIndex) {
                 case SELECT_ALGORITHM_MD5:
@@ -153,9 +153,9 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     @IBAction func copyResultButtonClicked(sender: NSButton) {
-        var pasteBoard = NSPasteboard.generalPasteboard()
+        let pasteBoard = NSPasteboard.generalPasteboard()
         pasteBoard.clearContents();
-        var str = resultView.stringValue;
+        let str = resultView.stringValue;
         // now read write our String and an Array with 1 item at index 0
         pasteBoard.writeObjects([str]);
     }
@@ -219,7 +219,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         }
        
         
-        var result = convertCfTypeToString(TGDFileHashCreateWithPath(filePath, 4096, alg));
+        let result = convertCfTypeToString(TGDFileHashCreateWithPath(filePath, 4096, alg));
         
         showResult(result!);
         checkCopyButtonVisibility();
@@ -236,7 +236,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     func showResult(result:String?) {
-        var lowercase = outputFormatRadio.selectedRow == 0;
+        let lowercase = outputFormatRadio.selectedRow == 0;
         var string:String;
         if(result == nil) {
             string = resultView.stringValue;
@@ -265,8 +265,8 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     }
     
     func compareResult() {
-        var resultString = resultView.stringValue;
-        var compareString = compareView.stringValue;
+        let resultString = resultView.stringValue;
+        let compareString = compareView.stringValue;
         var compareResultString:String = "";
         if(resultString != "" && compareString != "") {
             if(resultString.lowercaseString == compareString.lowercaseString) {
