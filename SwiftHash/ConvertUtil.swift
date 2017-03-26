@@ -106,7 +106,8 @@ func convertDateToTimeMillis(_ source:String) -> String? {
     }
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss";
-    let date = dateFormatter.date(from: source);
+    
+    let date = dateFormatter.date(from: source.characters.count == 16 ? (source+":00") : source);
     if let trueDate = date {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 0;

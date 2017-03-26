@@ -216,6 +216,8 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
             alg = TGDHashAlgorithm(TGDHashAlgorithmSHA384);
         case SELECT_ALGORITHM_SHA512:
             alg = TGDHashAlgorithm(TGDHashAlgorithmSHA512);
+        case SELECT_ALGORITHM_CRC16:
+            alg = TGDHashAlgorithm(TGDChecksumAlgorithmCRC16);
         case SELECT_ALGORITHM_CRC32:
             alg = TGDHashAlgorithm(TGDChecksumAlgorithmCRC32);
         default:

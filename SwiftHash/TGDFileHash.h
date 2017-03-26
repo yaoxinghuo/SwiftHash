@@ -49,6 +49,7 @@ enum {
     TGDHashAlgorithmSHA256, 
     TGDHashAlgorithmSHA384, 
     TGDHashAlgorithmSHA512,
+    TGDChecksumAlgorithmCRC16,
     TGDChecksumAlgorithmCRC32
 };
 typedef unsigned int TGDHashAlgorithm;
