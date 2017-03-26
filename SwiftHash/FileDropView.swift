@@ -14,18 +14,18 @@ class FileDropView : NSView {
     
     var delegate : FileDropViewDelegate?;
     
-    override func drawRect(dirtyRect: NSRect)  {
-        super.drawRect(dirtyRect)
-        NSColor.whiteColor().set();
+    override func draw(_ dirtyRect: NSRect)  {
+        super.draw(dirtyRect)
+        NSColor.white.set();
         NSRectFill(dirtyRect);
     }
     
     override func awakeFromNib() {
-        registerForDraggedTypes([NSFilenamesPboardType]);
+        register(forDraggedTypes: [NSFilenamesPboardType]);
     }
     
-    override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation  {
-        return NSDragOperation.Copy;
+    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation  {
+        return NSDragOperation.copy;
 //        let sourceDragMask = sender.draggingSourceOperationMask()
 //        let pboard = sender.draggingPasteboard()!
 //        
@@ -37,12 +37,12 @@ class FileDropView : NSView {
 //        return NSDragOperation.None
     }
     
-    override func performDragOperation(sender: NSDraggingInfo) -> Bool {
+    override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         var pboard:NSPasteboard! = sender.draggingPasteboard()
         if pboard != nil {
             pboard = sender.draggingPasteboard()
             if pboard.types!.contains(NSFilenamesPboardType) {
-                var files:[String] = pboard.propertyListForType(NSFilenamesPboardType) as! [String]
+                var files:[String] = pboard.propertyList(forType: NSFilenamesPboardType) as! [String]
                 if(files.count > 0) {
                     if(delegate != nil) {
                         delegate!.fileDropView(didDroppedFile: files[0]);
