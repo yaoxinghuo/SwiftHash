@@ -38,6 +38,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
     @IBOutlet weak var outputFormatRadio: NSMatrix!
     @IBOutlet weak var compareResultView: NSTextField!
     @IBOutlet weak var copyResultButton: NSButton!
+    @IBOutlet weak var resultToSourceButton: NSButton!
     @IBOutlet weak var compareView: NSTextField!
     @IBOutlet weak var resultView: NSTextField!
     @IBOutlet weak var sourceStringView: NSTextField!
@@ -78,6 +79,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
             hidden = true;
         }
         copyResultButton.isHidden = hidden;
+        resultToSourceButton.isHidden = hidden;
     }
 
     @IBAction func hashAlgorithmComboBoxSelected(_ sender: NSComboBox) {
@@ -163,7 +165,14 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         // now read write our String and an Array with 1 item at index 0
         pasteBoard.writeObjects([str as NSPasteboardWriting]);
     }
+    
+    
 
+    @IBAction func resultToSourceClicked(_ sender: NSButton) {
+        sourceStringView.stringValue = resultView.stringValue;
+        calcHash();
+    }
+    
     @IBAction func outputFormatClicked(_ sender: NSMatrix) {
         showResult(nil);
         let defaults = UserDefaults.standard;
