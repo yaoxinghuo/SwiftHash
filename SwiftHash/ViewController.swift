@@ -164,6 +164,15 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         let str = resultView.stringValue;
         // now read write our String and an Array with 1 item at index 0
         pasteBoard.writeObjects([str as NSPasteboardWriting]);
+        
+        if #available(OSX 10.12, *) {
+            sender.title = "Copied";
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
+                sender.title = "Copy Result";
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     
