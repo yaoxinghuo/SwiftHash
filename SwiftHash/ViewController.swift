@@ -3,7 +3,7 @@
 //  SwiftHash
 //
 //  Created by Terry on 2015-3-30.
-//  Copyright (c) 2015 MengyangSoft. All rights reserved.
+//  Copyright (c) 2017 Terry. All rights reserved.
 //
 
 import Cocoa
