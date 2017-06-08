@@ -182,7 +182,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate, 
         hashAlgorithmComboBox.removeAllItems();
         hashAlgorithmComboBox.addItems(withObjectValues: ["MD5", "SHA1", "SHA224", "SHA256", "SHA384", "SHA512", "CRC16", "CRC32"]);
         if (tab == 1) {
-            hashAlgorithmComboBox.addItems(withObjectValues: ["Dec->Hex(0x)", "Hex(0x)->Dec", "String->Base64", "Base64->String", "TimeMillis->Date", "Date->TimeMillis"]);
+            hashAlgorithmComboBox.addItems(withObjectValues: ["Dec->Hex(0x)", "Hex(0x)->Dec", "String->Base64", "Base64->String", "TimeSeconds->Date", "Date->TimeSeconds"]);
         }
     }
 
